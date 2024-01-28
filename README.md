@@ -1,13 +1,20 @@
-## ardupilot_gz devcontainer
+## ardupilot_gz devcontainer template
+
+### Instructions
+
+1. 
+    ```
+    #go into your ros2 workspace
+    mkdir -p ~/ros2_ws/src && cd ~/ros2_ws
+    ```
+2. 
+    ```
+    #clone the repo into .devcontainer folder at root of workspace
+    mkdir .devcontainer && git clone git@github.com:pulak-gautam/ardupilot_gz-devcontainer.git .
+    ```
+3. Open VSCode and run "Reopen in Devcontainer"
+
 
 ### Details
-- ROS2 Humble
-- Gazebo Garden
-
-### Workflow
-- Create a .devcontainer directory at the root of your workspace
-- Clone the repo there
-- Open VSCode at the root of the workspace
-- Hit "Reopen in Container" 
-- ardupilot_ws with all necessary packages relating to ardupilot_gz is initialized at run, binaries for all the other packages mentioned in the ``.repos`` are there 
-
+- your workspace will be mounted over ``/workspaces``
+- ardupilot_gz and SITL related packages are in ``/workspaces/ardupilot_ws``

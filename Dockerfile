@@ -50,11 +50,11 @@ RUN rosdep update
 
 
 # ardupilot gz
-RUN cd / && sudo mkdir -p ardupilot_ws/src && \
-    cd ardupilot_ws/src && \
+RUN cd / && sudo mkdir -p workspaces/ardupilot_ws/src && \
+    cd workspaces/ardupilot_ws/src && \
     sudo wget https://raw.githubusercontent.com/ArduPilot/ardupilot_gz/main/ros2_gz.repos && \
     sudo vcs import --recursive < ros2_gz.repos
-RUN cd /ardupilot_ws && \
+RUN cd /workspaces/ardupilot_ws && \
     sudo apt update && \
     rosdep update && \
     rosdep install --rosdistro $ROS_DISTRO --from-paths src -i -r -y
