@@ -17,7 +17,8 @@
               "ms-vscode.cpptools-themes",
               "twxs.cmake",
               "donjayamanne.python-extension-pack",
-              "eamodio.gitlens"
+              "eamodio.gitlens",
+              "ms-iot.vscode-ros"
           ]
       }
   },
