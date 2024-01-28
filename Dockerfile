@@ -21,7 +21,7 @@ RUN sudo usermod --append --groups video $USERNAME
 RUN sudo apt update && sudo apt upgrade -y
 
 # Install Git
-RUN sudo apt install -y git
+RUN sudo apt install -y git 
 
 ############################# Gazebo Fortress Install #####################################
 # RUN sudo apt-get install -y lsb-release wget gnupg
@@ -30,7 +30,7 @@ RUN sudo apt install -y git
 #     && sudo apt-get update -y \
 #     && sudo apt-get install -y ignition-fortress
 
-# RUN sudo apt-get install ros-${ROS_DISTRO}-ros-gz -y
+# RUN sudo apt-get install ros-humble-ros-gz -y
 
 ############################# Gazebo Garden Install #######################################
 
@@ -46,34 +46,23 @@ RUN sudo apt-get install ros-humble-ros-gzgarden -y
 RUN rosdep update
 
 
-############################# Additional Packages #########################################
+############################# Additional Dependencies #########################################
 
-
-# ardupilot gz
-RUN cd / && sudo mkdir -p workspaces/ardupilot_ws/src && \
-    cd workspaces/ardupilot_ws/src && \
-    sudo wget https://raw.githubusercontent.com/ArduPilot/ardupilot_gz/main/ros2_gz.repos && \
-    sudo vcs import --recursive < ros2_gz.repos
-RUN cd /workspaces/ardupilot_ws && \
-    sudo apt update && \
-    rosdep update && \
-    rosdep install --rosdistro $ROS_DISTRO --from-paths src -i -r -y
+# XRCE DDS
 RUN cd / && sudo git clone --recurse-submodules https://github.com/ardupilot/Micro-XRCE-DDS-Gen.git && \
     cd Micro-XRCE-DDS-Gen && \
     sudo ./gradlew assemble
 RUN echo "export PATH=$PATH:/Micro-XRCE-DDS-Gen/scripts" >> ~/.bashrc
+
 RUN sudo apt install python3-pip -y && \
     python3 -m pip install pexpect && \
     python3 -m pip install future
-
 
 # MAVProxy
 RUN sudo apt-get install python3-dev python3-opencv python3-wxgtk4.0 python3-pip python3-matplotlib python3-lxml python3-pygame -y && \
     pip3 install PyYAML mavproxy --user && \
     echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.bashrc
-
+    
 ################################# Source files ############################################
 # Source the ROS setup file
-RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
-
-###########################################################################################
+RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
