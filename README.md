@@ -18,7 +18,7 @@ workspace_folder
 
 #### Usage
 1. Create and organize your ROS2 workspace in the above described manner.
-2. ``git clone git@github.com:pulak-gautam/ardupilot_gz-devcontainer.git <workspace-folder>/src/.devcontainer/``
+2. ``git clone git@github.com:AerialRobotics-IITK/ros2-devcontainer-template.git <workspace-folder>/src/.devcontainer/``
 3. ``code <workspace-folder>/src``
 4. Reopen folder in Container : VSCode will detect the Dockerfile under .devcontainer and start building i
 
