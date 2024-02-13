@@ -11,7 +11,6 @@ workspace_folder
 │       ├── install
 │       └── log
 └── src
-│   ├── .devcontainer
 │   ├── <your-packages>
 │   ├──     ...
 
